@@ -19,6 +19,10 @@ export class App extends Component {
     })
   }
 
+  addNewUrl = (newUrl) => {
+    
+  }
+
   render() {
     return (
       <main className="App">
