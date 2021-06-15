@@ -8,15 +8,17 @@ export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      urls: []
+      urls: [],
+      error: ''
     }
   }
 
   componentDidMount() {
     getUrls()
-    .then((data) => {
-      this.setState({ urls: data.urls })
-    })
+      .then((data) => {
+        this.setState({ urls: data.urls })
+      })
+      .catch(err => this.setState({ error: "Something went Wrong" }))
   }
 
   addNewUrl = (newUrl) => {
@@ -24,7 +26,6 @@ export class App extends Component {
       .then(data => {
         this.setState({ urls: [...this.state.urls, data]})
       })
-      .catch(err => console.log(err))
   }
 
   render() {
@@ -35,7 +36,7 @@ export class App extends Component {
           <UrlForm addNewUrl={this.addNewUrl}/>
         </header>
 
-        <UrlContainer urls={this.state.urls}/>
+        {!this.state.error ? <UrlContainer urls={this.state.urls}/> : <p>Something went Wrong</p>}
       </main>
     );
   }
