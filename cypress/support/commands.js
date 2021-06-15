@@ -1,5 +1,8 @@
 Cypress.Commands.add('loadStubs', () => {
-    cy.intercept('http://localhost:3001/api/v1/urls', {
+    cy.intercept({
+        method: 'GET',
+        url: 'http://localhost:3001/api/v1/urls',
+    },   {
         "urls": [{
             id: 1,
             long_url: 'https://images.unsplash.com/photo-1531898418865-480b7090470f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80',
@@ -7,4 +10,10 @@ Cypress.Commands.add('loadStubs', () => {
             title: 'Awesome photo'
         }]
     })
+    cy.intercept({
+        method: 'POST',
+        url:  'http://localhost:3001/api/v1/urls',
+    }, 
+        { id: 2, long_url: "https://images.unsplash.com/photo...", short_url: "http://localhost:3001/useshorturl/2", title: 'Awesome photo' }
+    )
 })
