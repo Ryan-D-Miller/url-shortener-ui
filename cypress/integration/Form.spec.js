@@ -16,7 +16,7 @@ describe('Form', () => {
             .type("http://ImanewLongURL.com/withtomuchinformation")
             .should('have.value', "http://ImanewLongURL.com/withtomuchinformation")
     })
-    it('Should be able to submit information to the form and see see that the fields are emptied', () => {
+    it('Should be able to submit information to the form and see that the fields are emptied', () => {
         cy.get('input[name="title"]')
             .type("newUrl")
         cy.get('input[name="long_url"]')
