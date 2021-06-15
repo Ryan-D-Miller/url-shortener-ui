@@ -6,7 +6,7 @@ class UrlForm extends Component {
     this.props = props;
     this.state = {
       title: '',
-      urlToShorten: ''
+      long_url: ''
     };
   }
 
@@ -16,11 +16,15 @@ class UrlForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    const newUrl = {
+      ...this.state
+    }
+    
     this.clearInputs();
   }
 
   clearInputs = () => {
-    this.setState({title: '', urlToShorten: ''});
+    this.setState({title: '', long_url: ''});
   }
 
   render() {
