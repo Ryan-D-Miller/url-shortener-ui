@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { getUrls } from '../../apiCalls';
+import { getUrls, addUrl } from '../../apiCalls';
 import UrlContainer from '../UrlContainer/UrlContainer';
 import UrlForm from '../UrlForm/UrlForm';
 
@@ -20,7 +20,11 @@ export class App extends Component {
   }
 
   addNewUrl = (newUrl) => {
-    console.log(newUrl);
+    addUrl(newUrl)
+      .then(data => {
+        console.log(data)
+      })
+      .catch(err => console.log(err))
   }
 
   render() {
