@@ -20,7 +20,7 @@ export class App extends Component {
   }
 
   addNewUrl = (newUrl) => {
-    
+    console.log(newUrl);
   }
 
   render() {
@@ -28,7 +28,7 @@ export class App extends Component {
       <main className="App">
         <header>
           <h1>URL Shortener</h1>
-          <UrlForm />
+          <UrlForm addNewUrl={this.addNewUrl}/>
         </header>
 
         <UrlContainer urls={this.state.urls}/>

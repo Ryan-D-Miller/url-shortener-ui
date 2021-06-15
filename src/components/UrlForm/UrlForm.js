@@ -19,7 +19,7 @@ class UrlForm extends Component {
     const newUrl = {
       ...this.state
     }
-    
+    this.props.addNewUrl(newUrl)
     this.clearInputs();
   }
 
@@ -41,8 +41,8 @@ class UrlForm extends Component {
         <input
           type='text'
           placeholder='URL to Shorten...'
-          name='title'
-          value={this.state.title}
+          name='long_url'
+          value={this.state.long_url}
           onChange={e => this.handleNameChange(e)}
         />
 
