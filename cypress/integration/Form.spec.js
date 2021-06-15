@@ -20,5 +20,21 @@ describe('Form', () => {
         cy.get('input[name="title"]').should('have.value', '')
         cy.get('input[name="long_url"]').should('have.value', '')
     })
-    it('Should')
+    it('Should submit the form and see a new Card be added to the dom', () => {
+        cy.intercept('POST', 'http://localhost:3001/api/v1/urls', {
+            statusCode: 201,
+            body: {
+                "title": "newUrl",
+                "long_url": "http://ImanewLongURL.com/withtomuchinformation",
+                "id": 2,
+                "short_url": "http://shortUrl.com/2"
+            }
+        })
+        cy.get('input[name="title"]')
+            .type("newUrl")
+        cy.get('input[name="long_url"]')
+            .type("http://ImanewLongURL.com/withtomuchinformation")
+        cy.get('button').click()
+        cy.get('.url').eq(1).contains('newUrl')
+    })
 })
